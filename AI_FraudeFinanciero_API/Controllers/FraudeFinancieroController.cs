@@ -1,6 +1,5 @@
 ﻿using AI_FraudeFinanciero_API.Application;
 using AI_FraudeFinanciero_ML.Models;
-using AI_FraudeFinanciero_ML.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AI_FraudeFinanciero_API.Controllers;

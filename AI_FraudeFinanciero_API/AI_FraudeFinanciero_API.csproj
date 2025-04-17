@@ -7,16 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Content Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AI_FraudeFinanciero_Core\AI_FraudeFinanciero_Core.csproj" />
     <ProjectReference Include="..\AI_FraudeFinanciero_ML\AI_FraudeFinanciero_ML.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="bin\Debug\net9.0\Modelos\" />
   </ItemGroup>
 
 </Project>

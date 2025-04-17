@@ -1,8 +1,5 @@
-﻿using AI_FraudeFinanciero_Core.Domain;
-using AI_FraudeFinanciero_Core.Infrastructure.DBContexts;
-using AI_FraudeFinanciero_ML.IServices;
+﻿using AI_FraudeFinanciero_ML.IServices;
 using AI_FraudeFinanciero_ML.Models;
-using AI_FraudeFinanciero_ML.Services;
 
 namespace AI_FraudeFinanciero_API.Application;
 
