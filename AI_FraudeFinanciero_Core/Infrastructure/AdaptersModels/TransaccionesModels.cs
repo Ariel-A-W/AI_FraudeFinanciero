@@ -1,4 +1,4 @@
-﻿using AI_FraudeFinanciero_Core.Domain;
+﻿using AI_FraudeFinanciero_Core.Domain.Transacciones;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

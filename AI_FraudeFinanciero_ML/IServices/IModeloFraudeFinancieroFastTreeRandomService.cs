@@ -2,7 +2,7 @@
 
 namespace AI_FraudeFinanciero_ML.IServices;
 
-public interface IModeloFraudeFinancieroService
+public interface IModeloFraudeFinancieroFastTreeRandomService
 {
     Task<MemoryStream> Entrenamiento();
     TransaccionPrediction Predecir(TransaccionInput input);

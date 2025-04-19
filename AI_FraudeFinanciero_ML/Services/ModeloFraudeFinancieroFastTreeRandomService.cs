@@ -5,16 +5,15 @@ using Microsoft.ML;
 
 namespace AI_FraudeFinanciero_ML.Services;
 
-public class ModeloFraudeFinancieroService : IModeloFraudeFinancieroService
+public class ModeloFraudeFinancieroFastTreeRandomService : IModeloFraudeFinancieroFastTreeRandomService
 {
     private readonly ITransaccion _transaccion;
     private readonly MLContext _mlContext;
     private readonly ITransformer? _model; // Marked as nullable
 
-    public ModeloFraudeFinancieroService(ITransaccion transaccion, Stream? memoryStream = null) // Marked Stream as nullable
+    public ModeloFraudeFinancieroFastTreeRandomService(ITransaccion transaccion, Stream? memoryStream = null) // Marked Stream as nullable
     {
         _transaccion = transaccion;
-
         _mlContext = new MLContext();
 
         memoryStream = Entrenamiento().GetAwaiter().GetResult();
@@ -47,6 +46,7 @@ public class ModeloFraudeFinancieroService : IModeloFraudeFinancieroService
 
         var data = _mlContext.Data.LoadFromEnumerable(lstTrans);
 
+        // Construcción del pipeline de transformación de datos
         var pipeline = _mlContext.Transforms.Categorical.OneHotEncoding(new[]
         {
             new InputOutputColumnPair("OrigenEncoded", "Origen"),
@@ -58,12 +58,36 @@ public class ModeloFraudeFinancieroService : IModeloFraudeFinancieroService
             "OrigenEncoded", "DestinoEncoded", "CanalEncoded", "TipoEncoded",
             nameof(TransaccionEntrenamiento.Monto),
             nameof(TransaccionEntrenamiento.Frecuencia),
-            nameof(TransaccionEntrenamiento.TiempoTransaccion)))
-        .Append(_mlContext.BinaryClassification.Trainers.SdcaLogisticRegression(
-            labelColumnName: nameof(TransaccionEntrenamiento.IsSospechosa),
-            featureColumnName: "Features"));
+            nameof(TransaccionEntrenamiento.TiempoTransaccion)));
 
-        var model = pipeline.Fit(data);
+        // Modelos de clasificación: SDCA, FastTree, RandomForest
+        var modelType = "FastTree"; // Puedes cambiar esto a "RandomForest" para usar RandomForest
+        IEstimator<ITransformer> trainer;
+
+        switch (modelType)
+        {
+            case "FastTree":
+                trainer = _mlContext.BinaryClassification.Trainers.FastTree(
+                    labelColumnName: nameof(TransaccionEntrenamiento.IsSospechosa),
+                    featureColumnName: "Features");
+                break;
+
+            case "RandomForest":
+                trainer = _mlContext.BinaryClassification.Trainers.FastForest(
+                    labelColumnName: nameof(TransaccionEntrenamiento.IsSospechosa),
+                    featureColumnName: "Features");
+                break;
+
+            default:
+                // Default to SDCA if no valid model type is selected
+                trainer = _mlContext.BinaryClassification.Trainers.SdcaLogisticRegression(
+                    labelColumnName: nameof(TransaccionEntrenamiento.IsSospechosa),
+                    featureColumnName: "Features");
+                break;
+        }
+
+        // Encadena el pipeline con el modelo
+        var model = pipeline.Append(trainer).Fit(data);
 
         var memoryStream = new MemoryStream();
         _mlContext.Model.Save(model, data.Schema, memoryStream);
@@ -79,12 +103,8 @@ public class ModeloFraudeFinancieroService : IModeloFraudeFinancieroService
                 "El modelo no ha sido cargado o entrenado correctamente."
             );
 
-        var engine = 
-            _mlContext
-            .Model
-            .CreatePredictionEngine<
-                TransaccionInput, TransaccionPrediction
-            >(_model);
+        var engine = _mlContext.Model.CreatePredictionEngine<TransaccionInput, TransaccionPrediction>(_model);
         return engine.Predict(input);
     }
 }
+

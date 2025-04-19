@@ -1,9 +1,0 @@
-{
-  "Monto": 15000,
-  "Frecuencia": 3,
-  "TiempoTransaccion": 8.2,
-  "Canal": "web",
-  "Tipo": "transferencia",
-  "Origen": "123456",
-  "Destino": "654321"
-}

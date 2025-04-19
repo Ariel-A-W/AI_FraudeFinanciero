@@ -1,0 +1,275 @@
+Prueba Por Defecto:
+********************
+
+{
+  "origen": "CajaAhorro",
+  "destino": "CajaAhorro",
+  "canal": "Web",
+  "tipo": "transferencia",
+  "monto": 15000,
+  "frecuencia": 3,
+  "tiempoTransaccion": 8.2
+}
+
+Varios Casos de Potencial Fraude o No 
+**************************************
+
+Casos de Posible Fraude
+************************
+
+Pruebas: 
+*********
+Prueba 1:
+  {
+    "origen": "CuentaSueldo",
+    "destino": "CompraOnline",
+    "canal": "Cajero",
+    "tipo": "Crédito",
+    "monto": 47946.62,
+    "frecuencia": 4.0,
+    "tiempoTransaccion": 32.0
+  }
+
+Prueba 2:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Transferencia",
+    "canal": "HomeBanking",
+    "tipo": "Transferencia",
+    "monto": 45133.57,
+    "frecuencia": 9.0,
+    "tiempoTransaccion": 33.0
+  }
+
+Prueba 3:
+  {
+    "origen": "CajaAhorro",
+    "destino": "CompraOnline",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 33685.76,
+    "frecuencia": 3.0,
+    "tiempoTransaccion": 17.0
+  }
+
+Prueba 4:
+  {
+    "origen": "CajaAhorro",
+    "destino": "PagoTarjeta",
+    "canal": "Cajero",
+    "tipo": "Transferencia",
+    "monto": 45990.66,
+    "frecuencia": 8.0,
+    "tiempoTransaccion": 27.0
+  }
+
+Prueba 5:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Extracción",
+    "canal": "ATM",
+    "tipo": "Crédito",
+    "monto": 47090.89,
+    "frecuencia": 5.0,
+    "tiempoTransaccion": 10.0
+  }
+
+Resultados:
+************
+
+Resultado 1:
+  {
+    "origen": "CuentaSueldo",
+    "destino": "CompraOnline",
+    "canal": "Cajero",
+    "tipo": "Crédito",
+    "monto": 47946.62,
+    "frecuencia": 4.0,
+    "tiempoTransaccion": 32.0,
+    "score": 0.27,
+    "isSospechosa": true
+  }
+
+Resultado 2:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Transferencia",
+    "canal": "HomeBanking",
+    "tipo": "Transferencia",
+    "monto": 45133.57,
+    "frecuencia": 9.0,
+    "tiempoTransaccion": 33.0,
+    "score": 0.59,
+    "isSospechosa": true
+  }
+
+Resultaddo 3:
+  {
+    "origen": "CajaAhorro",
+    "destino": "CompraOnline",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 33685.76,
+    "frecuencia": 3.0,
+    "tiempoTransaccion": 17.0,
+    "score": 0.91,
+    "isSospechosa": true
+  }
+
+Resultado 4:
+  {
+    "origen": "CajaAhorro",
+    "destino": "PagoTarjeta",
+    "canal": "Cajero",
+    "tipo": "Transferencia",
+    "monto": 45990.66,
+    "frecuencia": 8.0,
+    "tiempoTransaccion": 27.0,
+    "score": 0.53,
+    "isSospechosa": true
+  }
+
+Resultado 5:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Extracción",
+    "canal": "ATM",
+    "tipo": "Crédito",
+    "monto": 47090.89,
+    "frecuencia": 5.0,
+    "tiempoTransaccion": 10.0,
+    "score": 0.22,
+    "isSospechosa": true
+  }
+
+Casos de Actividad Normal 
+**************************
+
+Pruebas: 
+********
+
+Prueba 6:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Servicios",
+    "canal": "ATM",
+    "tipo": "Débito",
+    "monto": 21187.24,
+    "frecuencia": 4.0,
+    "tiempoTransaccion": 17.0
+  }
+
+Prueba 7:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Transferencia",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 38977.39,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 41.0
+  }
+
+Prueba 8:
+  {
+    "origen": "CajaAhorro",
+    "destino": "Servicios",
+    "canal": "HomeBanking",
+    "tipo": "Transferencia",
+    "monto": 39221.75,
+    "frecuencia": 1.0,
+    "tiempoTransaccion": 22.0
+  }
+
+Prueba 9:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "CompraOnline",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 36155.8,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 15.0
+  }
+
+Prueba 10:
+  {
+    "origen": "CuentaSueldo",
+    "destino": "PagoTarjeta",
+    "canal": "POS",
+    "tipo": "Crédito",
+    "monto": 12607.89,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 43.0
+  }
+
+
+Resultados:
+***********
+
+Resultado 6:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Servicios",
+    "canal": "ATM",
+    "tipo": "Débito",
+    "monto": 21187.24,
+    "frecuencia": 4.0,
+    "tiempoTransaccion": 17.0,
+    "score": 0.58,
+    "isSospechosa": false
+  }
+
+Resultado 7:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "Transferencia",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 38977.39,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 41.0,
+    "score": 0.18,
+    "isSospechosa": false
+  }
+
+Resultado 8:
+  {
+    "origen": "CajaAhorro",
+    "destino": "Servicios",
+    "canal": "HomeBanking",
+    "tipo": "Transferencia",
+    "monto": 39221.75,
+    "frecuencia": 1.0,
+    "tiempoTransaccion": 22.0,
+    "score": 0.83,
+    "isSospechosa": false
+  }
+
+Resultado 9:
+  {
+    "origen": "CuentaCorriente",
+    "destino": "CompraOnline",
+    "canal": "AppMobile",
+    "tipo": "Transferencia",
+    "monto": 36155.8,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 15.0,
+    "score": 0.71,
+    "isSospechosa": false
+  }
+
+Resultado 10:
+  {
+    "origen": "CuentaSueldo",
+    "destino": "PagoTarjeta",
+    "canal": "POS",
+    "tipo": "Crédito",
+    "monto": 12607.89,
+    "frecuencia": 7.0,
+    "tiempoTransaccion": 43.0,
+    "score": 0.55,
+    "isSospechosa": false
+  }
+
+

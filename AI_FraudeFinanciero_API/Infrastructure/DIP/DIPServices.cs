@@ -1,5 +1,6 @@
 ﻿using AI_FraudeFinanciero_API.Application;
-using AI_FraudeFinanciero_Core.Domain;
+using AI_FraudeFinanciero_Core.Domain.ModelosEntrenamientos;
+using AI_FraudeFinanciero_Core.Domain.Transacciones;
 using AI_FraudeFinanciero_Core.Infrastructure.DBContexts;
 using AI_FraudeFinanciero_Core.Infrastructure.Repositories;
 using AI_FraudeFinanciero_ML.IServices;
@@ -22,8 +23,11 @@ public static class DIPServices
         );
 
         services.AddScoped<ITransaccion, FraudeFinancieroRepository>();
-        
+        services.AddScoped<IModeloEntrenamiento, ModelosEntrenamientosRepository>();
+
+        services.AddScoped<IModeloFFService, ModeloFFService>();
         services.AddScoped<IModeloFraudeFinancieroService, ModeloFraudeFinancieroService>();
+        services.AddScoped<IModeloFraudeFinancieroFastTreeRandomService, ModeloFraudeFinancieroFastTreeRandomService>();
 
         services.AddScoped<TransaccionUseCase>();
 

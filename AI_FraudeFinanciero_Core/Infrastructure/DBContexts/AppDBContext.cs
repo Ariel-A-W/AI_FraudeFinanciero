@@ -14,24 +14,26 @@ public class AppDBContext : DbContext, IUnitOfWork
         base.OnModelCreating(modelBuilder);
     }
 
-    public Task<bool> SaveChangesAsync(bool acceptAllChangesOnSuccess, bool autoDetectChangesEnabled, CancellationToken cancellationToken = default)
+    public override async Task<int> SaveChangesAsync(
+        CancellationToken cancellationToken = default
+    )
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> SaveChangesAsync(bool acceptAllChangesOnSuccess, bool autoDetectChangesEnabled, bool validateOnSaveEnabled, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<bool> IUnitOfWork.SaveChangesAsync(CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<bool> IUnitOfWork.SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
+        try
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            throw new ConcurrencyException(
+                "Infrastructure: Fallo en la concurrencia de los datos. Detalle:", ex
+            );
+        }
+        catch (Exception ex)
+        {
+            throw new ConcurrencyException(
+                "Infrastructure: Fallo genérico. Detalle:", ex
+            );
+        }
     }
 
     private void TestConnection()
@@ -45,13 +47,13 @@ public class AppDBContext : DbContext, IUnitOfWork
             else
             {
                 Debug.WriteLine("No se pudo establecer conexión con la base de datos.");
-                Environment.Exit(1); // Cierra la aplicación si la conexión falla
+                //Environment.Exit(1); // Cierra la aplicación si la conexión falla
             }
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"Error al conectar con la base de datos: {ex.Message}");
-            Environment.Exit(1); // Cierra la aplicación en caso de error
+            //Environment.Exit(1); // Cierra la aplicación en caso de error
         }
     }
 }

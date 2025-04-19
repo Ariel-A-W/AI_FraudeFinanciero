@@ -1,9 +1,9 @@
-﻿namespace AI_FraudeFinanciero_Core.Domain;
+﻿namespace AI_FraudeFinanciero_Core.Domain.Transacciones;
 
 public class Transaccion
 {
     public int Transaccion_Id { get; set; }
-    public DateTime Fecha { get; set; }
+    public DateTime Fecha { get; set; } = DateTime.Now;
     public string? Origen { get; set; }
     public string? Destino { get; set; }
     public string? Canal { get; set; }

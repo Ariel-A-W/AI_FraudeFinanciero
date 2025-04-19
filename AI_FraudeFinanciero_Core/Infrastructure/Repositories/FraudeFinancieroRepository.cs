@@ -1,4 +1,4 @@
-﻿using AI_FraudeFinanciero_Core.Domain;
+﻿using AI_FraudeFinanciero_Core.Domain.Transacciones;
 using AI_FraudeFinanciero_Core.Infrastructure.DBContexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +17,8 @@ public class FraudeFinancieroRepository : ITransaccion
         _unitOfWork = unitOfWork;
     }
 
-    public List<Transaccion> GetTransacciones()
+    public async Task<List<Transaccion>> GetTransacciones()
     {
-        return _dbSetTransaccion.ToList();
+        return await Task.FromResult(_dbSetTransaccion.ToList());
     }
 }
