@@ -1,0 +1,137 @@
+﻿@page "/"
+@using AI_FraudeFinanciero_Web.Pages.Components
+@inject HttpClient Http
+
+<PageTitle>Predicción de Fraudes Financieros</PageTitle>
+
+<h3>Predicción de Fraudes Financiero</h3>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon5">Origen</span>
+    <input @bind="Origen" type="text" class="form-control" placeholder="Origen" aria-label="Origen" aria-describedby="basic-addon5">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon6">Destino</span>
+    <input @bind="Destino" type="text" class="form-control" placeholder="Destino" aria-label="Destino" aria-describedby="basic-addon6">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon7">Tipo</span>
+    <input @bind="Tipo" type="text" class="form-control" placeholder="Tipo" aria-label="Tipo" aria-describedby="basic-addon7">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon4">Canal</span>
+    <input @bind="Canal" type="text" class="form-control" placeholder="Canal" aria-label="Canal" aria-describedby="basic-addon4">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon2">Frecuencia</span>
+    <input @bind="Frecuencia" type="number" class="form-control" placeholder="Frecuencia" aria-label="Frecuencia" aria-describedby="basic-addon2">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon3">Tiempo de Transacción en Segundos</span>
+    <input @bind="TiempoTransaccion" type="number" class="form-control" placeholder="Tiempo de Transacción" aria-label="Tiempo de Transacción" aria-describedby="basic-addon3">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Monto</span>
+    <input @bind="Monto" type="number" class="form-control" placeholder="Monto" aria-label="Monto" aria-describedby="basic-addon1">
+</div>
+
+@if (Resultado != null)
+{
+    <div className="input-group mb-3">
+        <div><strong>Score:</strong> @Resultado.score</div>
+    </div>
+    <div className="input-group mb-3">
+        <div><strong>Probabilidad:</strong> @Resultado.probability</div>
+    </div>            
+    <div className="input-group mb-3">
+        <div>
+            <strong>¿Es Sospechosa?</strong>
+            @if (Resultado.isSospechosa)
+            {
+                <Si />
+            }
+            else
+            {
+                <No />
+            }
+        </div>
+    </div>
+}
+
+<br />
+<div class="btn-group">
+    <span style="padding-left: 5px; padding-right: 5px">
+        <button class="btn btn-success" @onclick="Predecir">Predecir</button>
+    </span>
+    <span style="padding-left: 5px; padding-right: 5px">
+        <button class="btn btn-success" @onclick="Limpiar">Limpíar</button>
+    </span>    
+</div>
+
+@code {
+    private float Monto;
+    private float Frecuencia;
+    private float TiempoTransaccion;
+    private string? Canal;
+    private string? Tipo;
+    private string? Origen;
+    private string? Destino;
+
+    private ResultadoDTO? Resultado;
+
+    private async Task Predecir()
+    {
+        var transaccion = new TransaccionRequestDTO
+        {
+            monto = Monto,
+            frecuencia = Frecuencia,
+            tiempoTransaccion = TiempoTransaccion,
+            canal = Canal,
+            tipo = Tipo,
+            origen = Origen,
+            destino = Destino
+        };
+
+        var response = await Http.PostAsJsonAsync("https://localhost:7278/api/FraudeFinanciero/predecir", transaccion);
+        if (response.IsSuccessStatusCode)
+        {
+            Resultado = await response.Content.ReadFromJsonAsync<ResultadoDTO>();
+        }
+    }
+
+    private void Limpiar()
+    {
+        Monto = 0;
+        Frecuencia = 0;
+        TiempoTransaccion = 0;
+        Canal = "";
+        Tipo = "";
+        Origen = "";
+        Destino = "";
+        Resultado = null;
+    }
+
+    public class TransaccionRequestDTO
+    {
+        public float monto { get; set; }
+        public float frecuencia { get; set; }
+        public float tiempoTransaccion { get; set; }
+        public string? canal { get; set; }
+        public string? tipo { get; set; }
+        public string? origen { get; set; }
+        public string? destino { get; set; }
+    }
+
+    public class ResultadoDTO
+    {
+        public bool isSospechosa { get; set; }
+        public float probability { get; set; }
+        public float score { get; set; }
+    }
+}
