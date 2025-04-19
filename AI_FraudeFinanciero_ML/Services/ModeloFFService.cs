@@ -93,8 +93,23 @@ public class ModeloFFService : IModeloFFService
         await Task.CompletedTask;
     }
 
-    public TransaccionPrediction Predecir(TransaccionInput input)
+    public async Task<TransaccionPrediction> Predecir(TransaccionInput input)
     {
-        throw new NotImplementedException();
+        var modelDB = await _modeloEntrenamiento.GetById(1);
+
+        if (modelDB == null)
+            return await Task.FromResult(new TransaccionPrediction());
+
+        using var memoryStream = new MemoryStream(modelDB.Modelo);
+
+        var mlContext = new MLContext();
+
+        var loaadedModel = mlContext.Model.Load(memoryStream, out var _);
+
+        var engine = mlContext.Model.CreatePredictionEngine<
+            TransaccionInput, TransaccionPrediction
+        >(loaadedModel);
+
+        return await Task.FromResult(engine.Predict(input));
     }
 }

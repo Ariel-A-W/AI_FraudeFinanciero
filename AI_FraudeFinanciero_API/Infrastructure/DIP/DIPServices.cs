@@ -26,7 +26,6 @@ public static class DIPServices
         services.AddScoped<IModeloEntrenamiento, ModelosEntrenamientosRepository>();
 
         services.AddScoped<IModeloFFService, ModeloFFService>();
-        services.AddScoped<IModeloFraudeFinancieroService, ModeloFraudeFinancieroService>();
         services.AddScoped<IModeloFraudeFinancieroFastTreeRandomService, ModeloFraudeFinancieroFastTreeRandomService>();
 
         services.AddScoped<TransaccionUseCase>();

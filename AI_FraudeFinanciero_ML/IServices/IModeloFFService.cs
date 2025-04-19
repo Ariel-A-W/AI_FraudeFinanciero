@@ -6,5 +6,5 @@ public interface IModeloFFService
 {
     Task Liberar(CancellationToken cancellationToken);
     Task<int> Entrenamiento(CancellationToken cancellationToken);
-    TransaccionPrediction Predecir(TransaccionInput input);
+    Task<TransaccionPrediction> Predecir(TransaccionInput input);
 }
