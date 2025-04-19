@@ -40,7 +40,8 @@ public class TransaccionUseCase
             new TransaccionResponseDTO
             { 
                 Score = resultado.Score,
-                Prediccion = resultado.PredictedLabel
+                Probability = resultado.Probability,
+                IsSospechosa = resultado.PredictedLabel
             }
         );
     }
