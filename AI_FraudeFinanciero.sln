@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_ML", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_API", "AI_FraudeFinanciero_API\AI_FraudeFinanciero_API.csproj", "{726FE259-4564-41A9-B7BF-BDE090A2EF52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_Web", "AI_FraudeFinanciero_Web\AI_FraudeFinanciero_Web.csproj", "{91E2838C-82A8-486F-A750-974123734089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,8 +57,23 @@ Global
 		{726FE259-4564-41A9-B7BF-BDE090A2EF52}.Release|x64.Build.0 = Release|Any CPU
 		{726FE259-4564-41A9-B7BF-BDE090A2EF52}.Release|x86.ActiveCfg = Release|Any CPU
 		{726FE259-4564-41A9-B7BF-BDE090A2EF52}.Release|x86.Build.0 = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|x64.Build.0 = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Debug|x86.Build.0 = Debug|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|x64.ActiveCfg = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|x64.Build.0 = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|x86.ActiveCfg = Release|Any CPU
+		{91E2838C-82A8-486F-A750-974123734089}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3183A6C-CAD1-4069-A285-E40792CA0D35}
 	EndGlobalSection
 EndGlobal
