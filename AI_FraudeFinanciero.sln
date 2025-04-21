@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_API", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_Web", "AI_FraudeFinanciero_Web\AI_FraudeFinanciero_Web.csproj", "{91E2838C-82A8-486F-A750-974123734089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_FraudeFinanciero_Test", "AI_FraudeFinanciero_Test\AI_FraudeFinanciero_Test.csproj", "{B056E33C-653D-4908-A0C6-AD3233F837DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{91E2838C-82A8-486F-A750-974123734089}.Release|x64.Build.0 = Release|Any CPU
 		{91E2838C-82A8-486F-A750-974123734089}.Release|x86.ActiveCfg = Release|Any CPU
 		{91E2838C-82A8-486F-A750-974123734089}.Release|x86.Build.0 = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|x64.Build.0 = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|x64.Build.0 = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B056E33C-653D-4908-A0C6-AD3233F837DA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
