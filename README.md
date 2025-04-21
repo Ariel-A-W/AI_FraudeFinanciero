@@ -100,6 +100,6 @@ Una vez que haya instalado el servidor en su computadora local deberá correr el
 
 ## Solución
 
-## Descargue la solución del repositorio y proceda con la actualización de las dependencias. Ejecute la aplicación.
+Descargue la solución del repositorio y proceda con la actualización de las dependencias. Ejecute la aplicación.
 
 @Autor: Ariel Alejandro Wagner
